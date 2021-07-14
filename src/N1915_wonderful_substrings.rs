@@ -7,10 +7,11 @@ impl Solution {
         let mut set = [false; 10];
         while buffer <= word.len() {
             for i in 0..word.len()-buffer {
-                for v in i..i+buffer {
+                for v in i..=i+buffer {
                     set[word.as_bytes()[v] as usize - 'a' as usize] = true;
                 }
-                if set.iter().filter(|b| **b).count() % 2 == 0 {
+                println!("{:?}", set);
+                if set.iter().filter(|b| **b).count() % 2 == 1 {
                     result += 1;
                 }
                 for i in 0..set.len() {
